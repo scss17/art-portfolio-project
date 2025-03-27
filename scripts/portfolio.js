@@ -97,7 +97,7 @@ const loadCards = async () => {
 
   try {
     // Fetch project data from JSON file
-    const response = await fetch("/data/project_images.json");
+    const response = await fetch("data/project_images.json");
     const projectFiles = await response.json();
 
     Object.entries(projectFiles).forEach(([type, projects]) => {
