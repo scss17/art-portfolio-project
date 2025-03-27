@@ -96,11 +96,11 @@ const loadCards = () => {
   const cardContainer = document.querySelector(".cards-grid");
 
   const projectCovers = {
-    ceramics: 1,
     painting: 1,
     photography: 2,
+    ceramics: 1,
     printmaking: 4,
-    sculpture: 1,
+    sculpture: 2,
   };
 
   // Loop through each project type in the projectCovers object and create cards
