@@ -41,7 +41,7 @@ const loadProjects = async () => {
   }
 
   try {
-    const response = await fetch("/data/project_images.json");
+    const response = await fetch("data/project_images.json");
     const projectData = await response.json();
     const imageCount = projectData[type]?.[project] || 0;
 
@@ -50,7 +50,7 @@ const loadProjects = async () => {
 
       for (let i = 0; i < imageCount; i++) {
         const image = document.createElement("img");
-        image.src = `/img/projects/${type}/${project}/${project}_${i + 1}.jpg`;
+        image.src = `img/projects/${type}/${project}/${project}_${i + 1}.jpg`;
 
         image.classList.add("project-image");
 
@@ -62,4 +62,5 @@ const loadProjects = async () => {
   }
 };
 
-loadProjects();
+// Call setupPage when the document is fully loaded
+window.addEventListener("DOMContentLoaded", loadProjects);
