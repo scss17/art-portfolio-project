@@ -92,40 +92,72 @@ const loadButtons = () => {
 };
 
 // Function to load the cards for the projects
-const loadCards = () => {
+const loadCards = async () => {
   const cardContainer = document.querySelector(".cards-grid");
 
-  const projectCovers = {
-    painting: 1,
-    photography: 2,
-    ceramics: 1,
-    printmaking: 4,
-    sculpture: 2,
-  };
+  try {
+    // Fetch project data from JSON file
+    const response = await fetch("/data/project_images.json");
+    const projectFiles = await response.json();
 
-  // Loop through each project type in the projectCovers object and create cards
-  Object.entries(projectCovers).forEach(([type, numOfProjects]) => {
-    for (let i = 0; i < numOfProjects; i++) {
-      const card = document.createElement("div");
-      card.classList.add("project-card", `project-${type}`);
+    Object.entries(projectFiles).forEach(([type, projects]) => {
+      Object.keys(projects).forEach((project, index) => {
+        const card = document.createElement("div");
+        card.classList.add("project-card", `project-${type}`);
 
-      // Set background image using inline styles
-      const cardUrl = `url(/img/cards/${i + 1}_${type}.jpg)`;
-      card.style.backgroundImage = cardUrl;
+        // Set background image using inline styles
+        const cardUrl = `url(/img/cards/${index + 1}_${type}.jpg)`;
+        card.style.backgroundImage = cardUrl;
 
-      //* Redirect on a link
-      card.addEventListener("click", () => {
-        window.location.href = `/project.html`;
+        //* Redirect on a link
+        card.addEventListener("click", () => {
+          window.location.href = `/project.html?type=${type}&project=${project}`;
+        });
+
+        // Append card to the container
+        cardContainer.appendChild(card);
       });
+    });
+  } catch (error) {
+    console.error("Error loading project cards: ", error);
+  }
 
-      // Append card to the container
-      cardContainer.appendChild(card);
-    }
-  });
+  // const projectFiles = {
+  //   painting: ["hues_of_home"],
+  //   photography: ["the_taste_of_books", "built_out_of_stone"],
+  //   ceramics: ["the_shore_of_another_world"],
+  //   printmaking: [
+  //     "just_planted",
+  //     "sunday_morning",
+  //     "i_find_you",
+  //     "in_the_middle_of_nowhere",
+  //   ],
+  //   sculpture: ["trust_the_process", "beyond_the_frame"],
+  // };
+
+  // // Loop through each project type in the projectCovers object and create cards
+  // Object.entries(projectFiles).forEach(([type, projects]) => {
+  //   for (let i = 0; i < projects.length; i++) {
+  //     const card = document.createElement("div");
+  //     card.classList.add("project-card", `project-${type}`);
+
+  //     // Set background image using inline styles
+  //     const cardUrl = `url(/img/cards/${i + 1}_${type}.jpg)`;
+  //     card.style.backgroundImage = cardUrl;
+
+  //     //* Redirect on a link
+  //     card.addEventListener("click", () => {
+  //       window.location.href = `/project.html?type=${type}&project=${projects[i]}`;
+  //     });
+
+  //     // Append card to the container
+  //     cardContainer.appendChild(card);
+  //   }
+  // });
 };
 
 // Main function to initialize everything on page load
-const setupPage = () => {
+const setupPage = async () => {
   const buttons = document.querySelectorAll(".btn-project");
   const projectCards = document.querySelectorAll(".project-card");
 
@@ -135,7 +167,7 @@ const setupPage = () => {
 
     if (projectCards.length === 0) {
       // Load the cards for the projects
-      loadCards();
+      await loadCards();
     }
 
     // Set up event listeners for active button logic

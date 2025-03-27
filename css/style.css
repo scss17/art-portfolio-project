@@ -199,6 +199,64 @@
   display: none;
 }
 
+/* ======================== */
+/* === PROJECTS SECTION === */
+/* ======================== */
+.project-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.projec #project-not-available {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
+
+#project-not-available.inactive {
+  display: none;
+}
+
+.comming-soon {
+  font-size: 15rem;
+  font-weight: 700;
+}
+
+.return-link:link,
+.return-link:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--secondary-text-color);
+  font-weight: 500;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.return-link:hover,
+.return-link:active {
+  color: var(--primary-hover-color);
+}
+
+.project-images {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-image {
+  width: 100%;
+}
+
+.return-container {
+  padding: 4rem 0;
+  background-color: black;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
 /* ======================= */
 /* === CONTACT SECTION === */
 /* ======================= */
