@@ -106,12 +106,12 @@ const loadCards = async () => {
         card.classList.add("project-card", `project-${type}`);
 
         // Set background image using inline styles
-        const cardUrl = `url(../img/cards/${index + 1}_${type}.jpg)`;
+        const cardUrl = `url(img/cards/${index + 1}_${type}.jpg)`;
         card.style.backgroundImage = cardUrl;
 
         //* Redirect on a link
         card.addEventListener("click", () => {
-          window.location.href = `/project.html?type=${type}&project=${project}`;
+          window.location.href = `maria-campos/project.html?type=${type}&project=${project}`;
         });
 
         // Append card to the container
