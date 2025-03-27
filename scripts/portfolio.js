@@ -111,7 +111,7 @@ const loadCards = async () => {
 
         //* Redirect on a link
         card.addEventListener("click", () => {
-          window.location.href = `maria-campos/project.html?type=${type}&project=${project}`;
+          window.location.href = `project.html?type=${type}&project=${project}`;
         });
 
         // Append card to the container
