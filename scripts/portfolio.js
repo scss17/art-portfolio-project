@@ -78,11 +78,11 @@ const loadButtons = () => {
       // Set custom properties for the images using inline styles
       button.style.setProperty(
         "--image-default",
-        `url('/img/buttons/${inactive}.png')`
+        `url('../img/buttons/${inactive}.png')`
       );
       button.style.setProperty(
         "--image-active",
-        `url('/img/buttons/${active}.png')`
+        `url('../img/buttons/${active}.png')`
       );
 
       // Append the button to the projectButtons container
@@ -106,7 +106,7 @@ const loadCards = async () => {
         card.classList.add("project-card", `project-${type}`);
 
         // Set background image using inline styles
-        const cardUrl = `url(/img/cards/${index + 1}_${type}.jpg)`;
+        const cardUrl = `url(../img/cards/${index + 1}_${type}.jpg)`;
         card.style.backgroundImage = cardUrl;
 
         //* Redirect on a link
@@ -121,39 +121,6 @@ const loadCards = async () => {
   } catch (error) {
     console.error("Error loading project cards: ", error);
   }
-
-  // const projectFiles = {
-  //   painting: ["hues_of_home"],
-  //   photography: ["the_taste_of_books", "built_out_of_stone"],
-  //   ceramics: ["the_shore_of_another_world"],
-  //   printmaking: [
-  //     "just_planted",
-  //     "sunday_morning",
-  //     "i_find_you",
-  //     "in_the_middle_of_nowhere",
-  //   ],
-  //   sculpture: ["trust_the_process", "beyond_the_frame"],
-  // };
-
-  // // Loop through each project type in the projectCovers object and create cards
-  // Object.entries(projectFiles).forEach(([type, projects]) => {
-  //   for (let i = 0; i < projects.length; i++) {
-  //     const card = document.createElement("div");
-  //     card.classList.add("project-card", `project-${type}`);
-
-  //     // Set background image using inline styles
-  //     const cardUrl = `url(/img/cards/${i + 1}_${type}.jpg)`;
-  //     card.style.backgroundImage = cardUrl;
-
-  //     //* Redirect on a link
-  //     card.addEventListener("click", () => {
-  //       window.location.href = `/project.html?type=${type}&project=${projects[i]}`;
-  //     });
-
-  //     // Append card to the container
-  //     cardContainer.appendChild(card);
-  //   }
-  // });
 };
 
 // Main function to initialize everything on page load
